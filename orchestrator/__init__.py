@@ -18,11 +18,10 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
     url = "http://localhost:7071/api/service"
     data = [{"name": "Subrat"}, {"name": "Sunil"}, {"name": "Sushri"}, {"age": 25}]
     res_list = await async_post_requests(url, data)
-    # logging.info(res_list)
     for response in res_list:
         logging.info(response.status)
-        # txt = await response.text()
-        # logging.info(txt)
+        txt = await response.text()
+        logging.info(txt)
     end_time = time.time()
     return func.HttpResponse(
         f"Time taken to respond: {end_time-start_time}", status_code=200
